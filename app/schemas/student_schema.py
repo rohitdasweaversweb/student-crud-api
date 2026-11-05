@@ -24,4 +24,4 @@ class StudentResponse(BaseModel):
     age: int
     course: str
     marks: float
-    image: str | None = None
+    image: str 

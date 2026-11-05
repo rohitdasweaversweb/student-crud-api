@@ -13,5 +13,5 @@ def student_helper(student) -> dict:
         "age": student["age"],
         "course": student["course"],
         "marks": student["marks"],
-        "image": student.get("image"),
+        "image": student["image"],
     }

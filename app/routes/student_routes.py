@@ -19,7 +19,7 @@ async def create_student(
     age: int = Form(...),
     course: str = Form(...),
     marks: float = Form(...),
-    image: UploadFile | None = File(None),
+    image: UploadFile = File(...),
 ):
 
     try:
