@@ -22,13 +22,15 @@ MAX_IMAGE_SIZE = 2 * 1024 * 1024  # 2 MB
 
 
 # Save uploaded image
+
 async def save_image(image: UploadFile):
 
     if image is None:
         raise HTTPException(
             status_code=400,
-            detail="Student image is required.",
+            detail="Student image is required."
         )
+
     if image.content_type not in ALLOWED_TYPES:
         await image.close()
         raise HTTPException(
@@ -69,7 +71,9 @@ async def save_image(image: UploadFile):
         await image.close()
 
 
+
 # 1. Create student
+
 async def create_student(
     student_data: StudentCreate,
     image: UploadFile,
@@ -98,12 +102,16 @@ async def create_student(
             {"_id": result.inserted_id}
         )
 
-        return student_helper(student)
+        return {
+            "message": "Student inserted successfully.",
+            "student": student_helper(student)
+        }
 
     except Exception:
         if image_path:
             Path(image_path).unlink(missing_ok=True)
         raise
+
 
 
 # 2. Get all students

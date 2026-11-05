@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from pydantic import ValidationError
 
@@ -12,7 +13,7 @@ router = APIRouter(
 
 
 # 1. Create student
-@router.post("/")
+@router.post("/", status_code=201)
 async def create_student(
     name: str = Form(...),
     email: str = Form(...),
